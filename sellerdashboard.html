@@ -1,170 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seller Dashboard | TikTok Shop KE</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      background-color: #000;
-      color: #fff;
-      display: flex;
-      min-height: 100vh;
-    }
-    .sidebar {
-      width: 250px;
-      background-color: #111;
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-    }
-    .sidebar h2 {
-      color: #DE3163;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .sidebar a {
-      color: #fff;
-      text-decoration: none;
-      padding: 12px;
-      margin-bottom: 10px;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
-    .sidebar a:hover {
-      background-color: #DE3163;
-      color: #fff;
-    }
-    .main {
-      flex: 1;
-      padding: 30px;
-      background-color: #000;
-    }
-    h1 {
-      color: #DE3163;
-      margin-bottom: 20px;
-    }
-    .section {
-      background-color: #111;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 30px;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      border: none;
-      font-size: 14px;
-    }
-    input[type="submit"] {
-      background-color: #DE3163;
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    input[type="submit"]:hover {
-      background-color: #c02657;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-    th, td {
-      padding: 12px;
-      text-align: left;
-      border-bottom: 1px solid #333;
-    }
-    th {
-      color: #DE3163;
-    }
-  </style>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Seller Dashboard | TikTok Shop KE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Montserrat', sans-serif;
+margin:0;
+background:#000;
+color:#fff;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* TOP NAVBAR */
+
+.topbar{
+background:#111;
+padding:15px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #222;
+}
+
+.topbar h2{
+color:#DE3163;
+margin:0;
+}
+
+.topbar nav a{
+color:#fff;
+text-decoration:none;
+margin-left:20px;
+font-size:14px;
+}
+
+.topbar nav a:hover{
+color:#DE3163;
+}
+
+/* DASHBOARD LAYOUT */
+
+.dashboard{
+display:flex;
+flex:1;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:240px;
+background:#111;
+padding:20px;
+display:flex;
+flex-direction:column;
+}
+
+.sidebar h3{
+color:#DE3163;
+margin-bottom:30px;
+}
+
+.sidebar a{
+color:#fff;
+text-decoration:none;
+padding:12px;
+margin-bottom:10px;
+border-radius:6px;
+transition:0.3s;
+}
+
+.sidebar a:hover{
+background:#DE3163;
+}
+
+/* MAIN */
+
+.main{
+flex:1;
+padding:30px;
+}
+
+h1{
+color:#DE3163;
+margin-bottom:20px;
+}
+
+.section{
+background:#111;
+padding:20px;
+border-radius:12px;
+margin-bottom:30px;
+}
+
+/* FORM */
+
+input,textarea{
+width:100%;
+padding:10px;
+margin-bottom:15px;
+border-radius:6px;
+border:none;
+font-size:14px;
+}
+
+input[type="submit"]{
+background:#DE3163;
+color:#fff;
+font-weight:600;
+cursor:pointer;
+}
+
+input[type="submit"]:hover{
+background:#c02657;
+}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+th,td{
+padding:12px;
+text-align:left;
+border-bottom:1px solid #333;
+}
+
+th{
+color:#DE3163;
+}
+
+/* BUTTON */
+
+button{
+background:#DE3163;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:4px;
+cursor:pointer;
+}
+
+button:hover{
+background:#c02657;
+}
+
+</style>
+
 </head>
+
 <body>
 
-  <div class="sidebar">
-    <h2>Dashboard</h2>
-    <a href="#upload">Upload Products</a>
-    <a href="#orders">Manage Orders</a>
-    <a href="#profile">Profile</a>
-    <a href="#logout">Logout</a>
-  </div>
 
-  <div class="main">
-    <h1>Welcome, Seller!</h1>
+<!-- TOP NAVIGATION -->
 
-    <!-- Upload Products Section -->
-    <div class="section" id="upload">
-      <h2>Upload New Product</h2>
-      <form id="uploadForm">
-        <input type="text" id="productName" placeholder="Product Name" required>
-        <textarea id="productDesc" placeholder="Product Description" rows="3" required></textarea>
-        <input type="number" id="productPrice" placeholder="Price (KES)" required>
-        <input type="text" id="productCategory" placeholder="Category / Tags" required>
-        <input type="url" id="tiktokLink" placeholder="TikTok Video Link (Optional)">
-        <input type="file" id="productImage" accept="image/*" required>
-        <input type="submit" value="Upload Product">
-      </form>
-    </div>
+<div class="topbar">
 
-    <!-- Manage Orders Section -->
-    <div class="section" id="orders">
-      <h2>Manage Orders</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Product</th>
-            <th>Buyer</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody id="ordersTable">
-          <!-- Example row -->
-          <tr>
-            <td>001</td>
-            <td>Red Dress</td>
-            <td>Jane Doe</td>
-            <td>Pending</td>
-            <td><button style="background:#DE3163;color:#fff;border:none;padding:6px 12px;border-radius:4px;">Update</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<h2>TikTok Shop KE</h2>
 
-    <!-- Profile Section -->
-    <div class="section" id="profile">
-      <h2>Profile & Account Settings</h2>
-      <form id="profileForm">
-        <input type="text" id="sellerName" placeholder="Full Name / Business Name">
-        <input type="email" id="sellerEmail" placeholder="Email">
-        <input type="tel" id="sellerPhone" placeholder="Phone Number">
-        <input type="submit" value="Update Profile">
-      </form>
-    </div>
+<nav>
+<a href="index.html">Home</a>
+<a href="products.html">Shop</a>
+<a href="send-parcel.html">Send Parcel</a>
+<a href="sellerdashboard.html">Dashboard</a>
+<a href="checkout.html">Orders</a>
+<a href="login.html">Logout</a>
+</nav>
 
-  </div>
+</div>
 
-  <script>
-    const uploadForm = document.getElementById('uploadForm');
-    uploadForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Product uploaded successfully! (Connect this to backend API)');
-      uploadForm.reset();
-    });
 
-    const profileForm = document.getElementById('profileForm');
-    profileForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Profile updated successfully! (Connect this to backend API)');
-    });
-  </script>
+<div class="dashboard">
+
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h3>Seller Menu</h3>
+
+<a href="#upload">Upload Product</a>
+<a href="#products">My Products</a>
+<a href="#orders">Manage Orders</a>
+<a href="#profile">Profile</a>
+
+</div>
+
+
+<!-- MAIN CONTENT -->
+
+<div class="main">
+
+<h1>Seller Dashboard</h1>
+
+
+<!-- UPLOAD PRODUCT -->
+
+<div class="section" id="upload">
+
+<h2>Upload New Product</h2>
+
+<form id="uploadForm">
+
+<input type="text" id="productName" placeholder="Product Name" required>
+
+<textarea id="productDesc" placeholder="Product Description" rows="3" required></textarea>
+
+<input type="number" id="productPrice" placeholder="Price (KES)" required>
+
+<input type="text" id="productCategory" placeholder="Category / Tags" required>
+
+<input type="url" id="tiktokLink" placeholder="TikTok Video Link (Optional)">
+
+<input type="file" id="productImage" accept="image/*">
+
+<input type="submit" value="Upload Product">
+
+</form>
+
+</div>
+
+
+<!-- MY PRODUCTS -->
+
+<div class="section" id="products">
+
+<h2>My Products</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Product</th>
+<th>Price</th>
+<th>Category</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="productsTable">
+
+<tr>
+<td>Example Product</td>
+<td>KES 2000</td>
+<td>Electronics</td>
+<td><button>Delete</button></td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<!-- ORDERS -->
+
+<div class="section" id="orders">
+
+<h2>Manage Orders</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Order ID</th>
+<th>Product</th>
+<th>Buyer</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>001</td>
+<td>Red Dress</td>
+<td>Jane Doe</td>
+<td>Pending</td>
+<td><button>Update</button></td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<!-- PROFILE -->
+
+<div class="section" id="profile">
+
+<h2>Profile & Account Settings</h2>
+
+<form id="profileForm">
+
+<input type="text" placeholder="Full Name / Business Name">
+
+<input type="email" placeholder="Email">
+
+<input type="tel" placeholder="Phone Number">
+
+<input type="submit" value="Update Profile">
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* PRODUCT UPLOAD SIMULATION */
+
+const uploadForm = document.getElementById('uploadForm')
+const productsTable = document.getElementById('productsTable')
+
+uploadForm.addEventListener('submit',(e)=>{
+
+e.preventDefault()
+
+const name = document.getElementById('productName').value
+const price = document.getElementById('productPrice').value
+const category = document.getElementById('productCategory').value
+
+const row = document.createElement("tr")
+
+row.innerHTML = `
+<td>${name}</td>
+<td>KES ${price}</td>
+<td>${category}</td>
+<td><button onclick="this.parentElement.parentElement.remove()">Delete</button></td>
+`
+
+productsTable.appendChild(row)
+
+alert("Product uploaded successfully!")
+
+uploadForm.reset()
+
+})
+
+
+/* PROFILE UPDATE */
+
+document.getElementById('profileForm').addEventListener('submit',(e)=>{
+
+e.preventDefault()
+
+alert("Profile updated successfully!")
+
+})
+
+</script>
+
+
 </body>
 </html>
