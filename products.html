@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Products | TikTok Shop KE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat', sans-serif;
+}
+
+body{
+background:#f6f6f6;
+color:#333;
+}
+
+/* HEADER */
+
+header{
+background:white;
+padding:20px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo img{
+height:45px;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#333;
+font-weight:500;
+}
+
+nav a:hover{
+color:#ff0050;
+}
+
+/* PAGE TITLE */
+
+.page-title{
+padding:50px 20px;
+text-align:center;
+}
+
+.page-title h1{
+font-size:36px;
+margin-bottom:10px;
+}
+
+/* PRODUCT GRID */
+
+.products{
+max-width:1200px;
+margin:auto;
+padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+/* PRODUCT CARD */
+
+.card{
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 10px 20px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-body{
+padding:20px;
+}
+
+.card-body h3{
+font-size:18px;
+margin-bottom:10px;
+}
+
+.price{
+color:#ff0050;
+font-weight:600;
+font-size:18px;
+margin-bottom:15px;
+}
+
+.card button{
+width:100%;
+padding:12px;
+border:none;
+background:#ff0050;
+color:white;
+border-radius:6px;
+cursor:pointer;
+font-weight:600;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:80px;
+padding:30px;
+text-align:center;
+background:#111;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+<img src="logo.png">
+<h2>TikTok Shop KE</h2>
+</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="#">Send Parcel</a>
+<a href="#">Become Seller</a>
+<a href="#">Login</a>
+</nav>
+
+</header>
+
+
+<div class="page-title">
+<h1>Trending TikTok Products</h1>
+<p>Discover viral products from TikTok sellers in Kenya</p>
+</div>
+
+
+<section class="products">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231658">
+<div class="card-body">
+<h3>Luxury Body Spray</h3>
+<div class="price">KES 1,200</div>
+<button>View Product</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+<div class="card-body">
+<h3>Smart Watch</h3>
+<div class="price">KES 2,500</div>
+<button>View Product</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796">
+<div class="card-body">
+<h3>Wireless Earbuds</h3>
+<div class="price">KES 1,800</div>
+<button>View Product</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
+<div class="card-body">
+<h3>Beauty Wig</h3>
+<div class="price">KES 4,500</div>
+<button>View Product</button>
+</div>
+</div>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 TikTok Shop KE</p>
+
+<p>Marketplace for TikTok sellers in Kenya</p>
+
+</footer>
+
+</body>
+</html>
