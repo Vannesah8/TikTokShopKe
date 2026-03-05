@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -31,6 +33,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 box-shadow:0 2px 10px rgba(0,0,0,0.05);
+flex-wrap:wrap;
 }
 
 .logo{
@@ -43,11 +46,19 @@ gap:10px;
 height:45px;
 }
 
+nav{
+display:flex;
+gap:20px;
+}
+
 nav a{
-margin-left:25px;
 text-decoration:none;
 color:#333;
 font-weight:500;
+}
+
+nav a:hover{
+color:#ff0050;
 }
 
 /* PAGE */
@@ -107,6 +118,18 @@ font-weight:600;
 cursor:pointer;
 }
 
+.book-btn:hover{
+background:#d40043;
+}
+
+/* PRICE DISPLAY */
+
+.price-display{
+margin-top:10px;
+font-weight:600;
+color:#ff0050;
+}
+
 /* INFO BOX */
 
 .info{
@@ -133,6 +156,7 @@ color:white;
 
 <body>
 
+
 <header>
 
 <div class="logo">
@@ -141,9 +165,13 @@ color:white;
 </div>
 
 <nav>
+
 <a href="index.html">Home</a>
 <a href="products.html">Shop</a>
 <a href="send-parcel.html">Send Parcel</a>
+<a href="sellersignup.html">Become Seller</a>
+<a href="sellerdashboard.html">Dashboard</a>
+
 </nav>
 
 </header>
@@ -152,33 +180,40 @@ color:white;
 <section class="page">
 
 <h1>Send a Parcel</h1>
-<p>Affordable parcel delivery across Nairobi</p>
+<p>Affordable parcel delivery across Nairobi and Kenya</p>
 
 
 <div class="form-box">
 
+<form id="parcelForm">
+
 <label>Sender Name</label>
-<input type="text">
+<input type="text" required>
 
 <label>Sender Phone</label>
-<input type="tel">
+<input type="tel" required>
 
 <label>Pickup Location</label>
-<input type="text" placeholder="Example: Syokimau">
+<input type="text" placeholder="Example: Syokimau" required>
 
 <label>Receiver Name</label>
-<input type="text">
+<input type="text" required>
 
 <label>Receiver Phone</label>
-<input type="tel">
+<input type="tel" required>
 
-<label>Delivery Location</label>
-<select>
-<option>Select Delivery Option</option>
-<option>Nairobi CBD Pickup – KES 80</option>
-<option>Nairobi Delivery – KES 200</option>
-<option>Countrywide Delivery – KES 400</option>
+<label>Delivery Option</label>
+
+<select id="deliveryOption" required>
+
+<option value="">Select Delivery Option</option>
+<option value="80">Nairobi CBD Pickup – KES 80</option>
+<option value="200">Nairobi Door Delivery – KES 200</option>
+<option value="400">Countrywide Delivery – KES 400+</option>
+
 </select>
+
+<div class="price-display" id="priceDisplay"></div>
 
 <label>Parcel Description</label>
 <input type="text" placeholder="Example: Small electronics">
@@ -186,6 +221,8 @@ color:white;
 <button class="book-btn">
 Book Delivery
 </button>
+
+</form>
 
 </div>
 
@@ -199,7 +236,7 @@ Book Delivery
 <p><strong>Countrywide Delivery:</strong> From KES 400</p>
 
 <p style="margin-top:10px;color:#666;">
-Perfect for TikTok sellers and small online businesses.
+Perfect for TikTok sellers and small online businesses shipping products to customers.
 </p>
 
 </div>
@@ -214,6 +251,39 @@ Perfect for TikTok sellers and small online businesses.
 <p>Affordable marketplace & parcel delivery in Kenya</p>
 
 </footer>
+
+
+<script>
+
+/* PRICE DISPLAY */
+
+const deliveryOption = document.getElementById("deliveryOption")
+const priceDisplay = document.getElementById("priceDisplay")
+
+deliveryOption.addEventListener("change",function(){
+
+if(this.value){
+priceDisplay.innerHTML = "Delivery Cost: KES " + this.value
+}else{
+priceDisplay.innerHTML = ""
+}
+
+})
+
+/* FORM SUBMISSION */
+
+document.getElementById("parcelForm").addEventListener("submit",function(e){
+
+e.preventDefault()
+
+alert("Parcel booking successful! Our rider will contact you shortly.")
+
+this.reset()
+priceDisplay.innerHTML=""
+
+})
+
+</script>
 
 </body>
 </html>
