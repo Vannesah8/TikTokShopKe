@@ -1,126 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ShopKe Product</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      display: flex;
-      justify-content: center;
-      padding: 40px;
-    }
+<meta charset="UTF-8">
+<title>ShopKe - Product</title>
 
-    .card {
-      background: #fff;
-      padding: 20px;
-      max-width: 400px;
-      border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: #0B0F14;
+  color: #fff;
+}
 
-    img {
-      width: 100%;
-      border-radius: 10px;
-    }
+/* Top bar */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 30px;
+  border-bottom: 1px solid #1f2a36;
+}
 
-    h2 {
-      margin: 15px 0 5px;
-    }
+.logo {
+  font-weight: 700;
+  font-size: 18px;
+}
 
-    .price {
-      color: green;
-      font-size: 20px;
-      margin-bottom: 15px;
-    }
+.secure {
+  font-size: 12px;
+  color: #B8C0CC;
+}
 
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
+/* Container */
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
 
-    button {
-      width: 100%;
-      padding: 12px;
-      background: black;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+/* Card */
+.card {
+  width: 380px;
+  background: #161C24;
+  border: 1px solid #1f2a36;
+  border-radius: 14px;
+  overflow: hidden;
+}
 
-    button:hover {
-      background: #333;
-    }
+/* Image */
+.card img {
+  width: 100%;
+}
 
-    .footer {
-      margin-top: 15px;
-      font-size: 12px;
-      color: #888;
-    }
-  </style>
+/* Content */
+.content {
+  padding: 18px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.desc {
+  color: #B8C0CC;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.price {
+  margin-top: 12px;
+  font-size: 18px;
+  color: #1DB954;
+  font-weight: 700;
+}
+
+/* Input */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: 1px solid #1f2a36;
+  background: #0B0F14;
+  color: #fff;
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  border: none;
+  background: #D72638;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Trust badge */
+.badge {
+  margin-top: 12px;
+  font-size: 11px;
+  color: #B8C0CC;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 11px;
+  color: #556070;
+  margin: 30px 0;
+}
+</style>
 </head>
+
 <body>
 
-<div class="card">
-  <img src="https://via.placeholder.com/400x300" alt="Product">
+<div class="nav">
+  <div class="logo">ShopKe</div>
+  <div class="secure">Secure Checkout</div>
+</div>
 
-  <h2 id="productName">Magic Cleaning Brush</h2>
-  <div class="price" id="productPrice">KES 1500</div>
+<div class="container">
+  <div class="card">
 
-  <input type="text" id="phone" placeholder="Enter M-Pesa phone number">
+    <img src="https://via.placeholder.com/500x350">
 
-  <button onclick="payNow()">Pay with M-Pesa</button>
+    <div class="content">
+      <div class="title">Magic Cleaning Brush</div>
+      <div class="desc">High-efficiency cleaning tool for home use</div>
 
-  <div class="footer">
-    Safe checkout with ShopKe<br>
-    No scams. Secure payments.
+      <div class="price">KES 1500</div>
+
+      <input type="text" id="phone" placeholder="Enter M-Pesa number">
+
+      <button class="btn" onclick="payNow()">
+        Pay via M-Pesa
+      </button>
+
+      <div class="badge">
+        Protected checkout • ShopKe holds payment until pickup
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!-- Firebase -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+<div class="footer">
+  ShopKe • Secure Marketplace for Kenya
+</div>
 
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-  };
+<script>
+function payNow() {
+  const phone = document.getElementById("phone").value;
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  if (!phone) {
+    alert("Enter M-Pesa number");
+    return;
+  }
 
-  window.payNow = async function() {
-    const phone = document.getElementById("phone").value;
-
-    if (!phone) {
-      alert("Enter phone number");
-      return;
-    }
-
-    try {
-      await addDoc(collection(db, "orders"), {
-        productName: "Magic Cleaning Brush",
-        price: 1500,
-        phone: phone,
-        status: "pending",
-        createdAt: new Date()
-      });
-
-      alert("Order placed! Complete payment via M-Pesa prompt.");
-
-    } catch (error) {
-      console.error(error);
-      alert("Error placing order");
-    }
-  };
+  alert("Order created. Proceed with M-Pesa payment flow next.");
+}
 </script>
 
 </body>
