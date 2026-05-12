@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ShopKe Product</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    h2 {
+      margin: 15px 0 5px;
+    }
+
+    .price {
+      color: green;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #333;
+    }
+
+    .footer {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <img src="https://via.placeholder.com/400x300" alt="Product">
+
+  <h2 id="productName">Magic Cleaning Brush</h2>
+  <div class="price" id="productPrice">KES 1500</div>
+
+  <input type="text" id="phone" placeholder="Enter M-Pesa phone number">
+
+  <button onclick="payNow()">Pay with M-Pesa</button>
+
+  <div class="footer">
+    Safe checkout with ShopKe<br>
+    No scams. Secure payments.
+  </div>
+</div>
+
+<!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.payNow = async function() {
+    const phone = document.getElementById("phone").value;
+
+    if (!phone) {
+      alert("Enter phone number");
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "orders"), {
+        productName: "Magic Cleaning Brush",
+        price: 1500,
+        phone: phone,
+        status: "pending",
+        createdAt: new Date()
+      });
+
+      alert("Order placed! Complete payment via M-Pesa prompt.");
+
+    } catch (error) {
+      console.error(error);
+      alert("Error placing order");
+    }
+  };
+</script>
+
+</body>
+</html>
